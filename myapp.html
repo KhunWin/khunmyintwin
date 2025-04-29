@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Win | Problem Solver & Software Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4f46e5; /* Enhanced indigo */
+            --primary-dark: #3730a3;
+            --primary-light: #818cf8;
+            --secondary: #0ea5e9; /* Sky blue accent */
+            --secondary-light: #7dd3fc;
+            --tertiary: #f97316; /* Orange accent */
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --gradient: linear-gradient(120deg, var(--primary), var(--secondary));
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Account for fixed header */
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--secondary);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.6rem;
+            background: var(--gradient);
+            color: white;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(79, 70, 229, 0.2);
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, var(--secondary), var(--primary));
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 14px rgba(79, 70, 229, 0.25);
+        }
+        
+        .btn:hover::before {
+            opacity: 1;
+        }
+        
+        .btn:active {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 8px rgba(79, 70, 229, 0.2);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            box-shadow: none;
+        }
+        
+        .btn-outline::before {
+            background: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            color: white;
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--dark);
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+        
+        /* Sections */
+        section {
+            padding: 6rem 0;
+            scroll-margin-top: 5rem;
+            position: relative;
+        }
+        
+        section:nth-child(even) {
+            background-color: rgba(79, 70, 229, 0.03);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            font-size: 2.5rem;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--gradient);
+        }
+        
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.05) 0%, rgba(14, 165, 233, 0.05) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(79, 70, 229, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(14, 165, 233, 0.1) 0%, transparent 20%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-subtitle {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s forwards 0.2s;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            opacity: 0;
+            animation: fadeInUp 0.8s forwards 0.4s;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero-description {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            color: var(--gray);
+            opacity: 0;
+            animation: fadeInUp 0.8s forwards 0.6s;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s forwards 0.8s;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background-color: rgba(37, 99, 235, 0.03);
+            clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+            z-index: 1;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-description {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .about-highlight {
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.1) 0%, rgba(14, 165, 233, 0.1) 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            margin-bottom: 2rem;
+        }
+        
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            background-color: white;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.05) 0%, rgba(14, 165, 233, 0.05) 100%);
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(79, 70, 229, 0.1);
+        }
+        
+        .stat-item:hover::before {
+            opacity: 1;
+        }
+        
+        .stat-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .stat-title {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-category {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+            transition: height 0.3s ease;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(79, 70, 229, 0.1);
+        }
+        
+        .skill-category:hover::before {
+            height: 10px;
+        }
+        
+        .category-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        .category-title i {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.2rem;
+        }
+        
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .skill-item {
+            background-color: rgba(79, 70, 229, 0.1);
+            color: var(--dark);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+        
+        .skill-item:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(79, 70, 229, 0.2);
+        }
+        
+        /* Work Experience Section */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid var(--primary);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+            transition: var(--transition);
+        }
+        
+        .timeline-item:hover::after {
+            background-color: var(--primary);
+            box-shadow: 0 0 0 5px rgba(79, 70, 229, 0.2);
+        }
+        
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            padding: 2rem;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.05) 0%, rgba(14, 165, 233, 0.05) 100%);
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(79, 70, 229, 0.1);
+        }
+        
+        .timeline-content:hover::before {
+            opacity: 1;
+        }
+        
+        .timeline-date {
+            background: var(--gradient);
+            color: white;
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            box-shadow: 0 3px 6px rgba(79, 70, 229, 0.2);
+        }
+        
+        .timeline-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .timeline-company {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .timeline-description {
+            margin-bottom: 1rem;
+        }
+        
+        .timeline-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .timeline-tag {
+            background-color: rgba(79, 70, 229, 0.1);
+            color: var(--primary);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+        
+        .timeline-tag:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* HAECO Projects Section */
+        .haeco-projects {
+            margin-top: 2rem;
+        }
+        
+        .project-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .haeco-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .haeco-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+        
+        .haeco-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(79, 70, 229, 0.15);
+        }
+        
+        .haeco-card:hover::before {
+            width: 100%;
+            opacity: 0.05;
+        }
+        
+        .haeco-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            margin: 0 auto;
+            margin-top: -30px;
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+            position: relative;
+            z-index: 10;
+        }
+        
+        .haeco-content {
+            padding: 2rem;
+        }
+        
+        .haeco-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 1rem 0;
+            color: var(--dark);
+            text-align: center;
+        }
+        
+        .haeco-description {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        .haeco-stats {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .haeco-stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .haeco-stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .haeco-stat-label {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+        
+        .haeco-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+        
+        .haeco-tag {
+            background-color: rgba(79, 70, 229, 0.1);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+        
+        .haeco-tag:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Projects Section */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(79, 70, 229, 0.15);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-image::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+            top: -100%;
+            left: -100%;
+            transition: all 0.5s ease;
+        }
+        
+        .project-card:hover .project-image::after {
+            top: 0;
+            left: 0;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .project-tag {
+            background-color: rgba(79, 70, 229, 0.1);
+            color: var(--primary);
+            padding: 0.2rem 0.6rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+        
+        .project-tag:hover {
+            background: var(--gradient);
+            color: white;
+        }
+        
+        .project-description {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .contact-methods {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            width: 100%;
+            max-width: 800px;
+        }
+        
+        .contact-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            text-align: center;
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(79, 70, 229, 0.1);
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-type {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .contact-value {
+            color: var(--primary);
+            font-weight: 500;
+            word-break: break-word;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.2);
+        }
+        
+        .social-link:hover {
+            transform: translateY(-10px) rotate(10deg);
+            box-shadow: 0 15px 30px rgba(79, 70, 229, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark) 0%, #1e40af 100%);
+            color: white;
+            padding: 3rem 0 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.05) 0%, transparent 20%);
+            z-index: 1;
+        }
+        
+        .footer-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary-light) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .footer-social a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .footer-social a:hover {
+            color: white;
+            transform: translateY(-3px) rotate(10deg);
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                        transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                        transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        .fade-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                        transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        .fade-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                        transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* Media Queries */
+        @media screen and (max-width: 968px) {
+            .about-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(odd) {
+                left: 0;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item::after {
+                left: 20px;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                padding: 1rem 2rem;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .contact-methods {
+                gap: 1rem;
+            }
+            
+            .contact-card {
+                width: calc(50% - 1rem);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#hero" class="logo">John Win</a>
+                <div class="nav-links">
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#haeco-projects" class="nav-link">HAECO Projects</a>
+                    <a href="#experience" class="nav-link">Experience</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <p class="hero-subtitle">Hi, my name is John Win</p>
+                <h1 class="hero-title">Problem Solver & <br>Software Developer</h1>
+                <p class="hero-description">I create innovative solutions for fintech and e-commerce by transforming complex problems into efficient, scalable, and user-friendly applications.</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn">View My Work</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <p class="about-description">
+                        I'm a Computer Science graduate from Hong Kong Baptist University with a focus on Information Systems and Analytics. I excel at leveraging technology to solve real-world problems, particularly in process automation, data analysis, and software development.
+                    </p>
+                    <div class="about-highlight">
+                        <p>My approach goes beyond writing code — I'm committed to understanding business challenges, designing elegant solutions, and implementing systems that drive efficiency and growth. With experience in aviation, e-commerce, and software development, I've developed a keen eye for optimizing processes and creating intuitive user experiences.</p>
+                    </div>
+                    <p class="about-description">
+                        Having worked with HAECO to develop automation systems that increased efficiency by 90%, I'm passionate about applying my technical expertise to the fintech and e-commerce industries, where innovation and problem-solving can create significant impact.
+                    </p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-item fade-in">
+                        <div class="stat-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div class="stat-number">2x</div>
+                        <div class="stat-title">President's Honor Roll</div>
+                    </div>
+                    <div class="stat-item fade-in">
+                        <div class="stat-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="stat-number">90%</div>
+                        <div class="stat-title">Efficiency Improvement</div>
+                    </div>
+                    <div class="stat-item fade-in">
+                        <div class="stat-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div class="stat-number">3+</div>
+                        <div class="stat-title">Development Projects</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category fade-in">
+                    <div class="category-title">
+                        <i class="fas fa-code"></i>
+                        <span>Programming Languages</span>
+                    </div>
+                    <div class="skill-list">
+                        <div class="skill-item"><i class="fab fa-python"></i> Python</div>
+                        <div class="skill-item"><i class="fab fa-java"></i> Java</div>
+                        <div class="skill-item"><i class="fab fa-js"></i> JavaScript</div>
+                        <div class="skill-item"><i class="fas fa-database"></i> SQL</div>
+                        <div class="skill-item"><i class="fab fa-html5"></i> HTML</div>
+                        <div class="skill-item"><i class="fab fa-css3-alt"></i> CSS</div>
+                    </div>
+                </div>
+                <div class="skill-category fade-in">
+                    <div class="category-title">
+                        <i class="fas fa-layer-group"></i>
+                        <span>Frameworks & Libraries</span>
+                    </div>
+                    <div class="skill-list">
+                        <div class="skill-item"><i class="fab fa-react"></i> React Native</div>
+                        <div class="skill-item"><i class="fab fa-node-js"></i> Node.js</div>
+                        <div class="skill-item"><i class="fab fa-vuejs"></i> Vue.js</div>
+                        <div class="skill-item"><i class="fab fa-bootstrap"></i> Bootstrap</div>
+                        <div class="skill-item"><i class="fas fa-mobile-alt"></i> Expo</div>
+                        <div class="skill-item"><i class="fas fa-server"></i> RESTful API</div>
+                    </div>
+                </div>
+                <div class="skill-category fade-in">
+                    <div class="category-title">
+                        <i class="fas fa-tools"></i>
+                        <span>Tools & Technologies</span>
+                    </div>
+                    <div class="skill-list">
+                        <div class="skill-item"><i class="fas fa-database"></i> MongoDB</div>
+                        <div class="skill-item"><i class="fas fa-chart-bar"></i> Tableau</div>
+                        <div class="skill-item"><i class="fas fa-chart-line"></i> Data Analysis</div>
+                        <div class="skill-item"><i class="fab fa-github"></i> Git/GitHub</div>
+                        <div class="skill-item"><i class="fas fa-paint-brush"></i> Photoshop</div>
+                        <div class="skill-item"><i class="fas fa-video"></i> Video Editing</div>
+                    </div>
+                </div>
+                <div class="skill-category fade-in">
+                    <div class="category-title">
+                        <i class="fas fa-user-tie"></i>
+                        <span>Professional Skills</span>
+                    </div>
+                    <div class="skill-list">
+                        <div class="skill-item"><i class="fas fa-lightbulb"></i> Problem-Solving</div>
+                        <div class="skill-item"><i class="fas fa-users"></i> Teamwork</div>
+                        <div class="skill-item"><i class="fas fa-comments"></i> Communication</div>
+                        <div class="skill-item"><i class="fas fa-tasks"></i> Project Management</div>
+                        <div class="skill-item"><i class="fas fa-sync-alt"></i> Adaptability</div>
+                        <div class="skill-item"><i class="fas fa-brain"></i> Quick Learner</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HAECO Projects Section -->
+    <section id="haeco-projects">
+        <div class="container">
+            <h2 class="section-title">HAECO Projects</h2>
+            <div class="project-cards">
+                <div class="haeco-card scale-in">
+                    <div class="haeco-icon">
+                        <i class="fas fa-file-word"></i>
+                    </div>
+                    <div class="haeco-content">
+                        <h3 class="haeco-title">Document Automation System</h3>
+                        <div class="haeco-stats">
+                            <div class="haeco-stat">
+                                <div class="haeco-stat-number">90%</div>
+                                <div class="haeco-stat-label">Efficiency Gain</div>
+                            </div>
+                        </div>
+                        <p class="haeco-description">
+                            Developed a Python-based automation system to convert SGML and XML format data into Word documents, generating procedural documents for aircraft maintenance, repairs, and inspections, while ensuring precision and compliance with aviation standards.
+                        </p>
+                        <div class="haeco-tags">
+                            <span class="haeco-tag">Python</span>
+                            <span class="haeco-tag">SGML/XML</span>
+                            <span class="haeco-tag">Automation</span>
+                            <span class="haeco-tag">Document Processing</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="haeco-card scale-in">
+                    <div class="haeco-icon">
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+                    <div class="haeco-content">
+                        <h3 class="haeco-title">PDF Data Extraction System</h3>
+                        <div class="haeco-stats">
+                            <div class="haeco-stat">
+                                <div class="haeco-stat-number">100%</div>
+                                <div class="haeco-stat-label">Manual Work Eliminated</div>
+                            </div>
+                        </div>
+                        <p class="haeco-description">
+                            Designed a system to extract critical data in table format from PDFs and Images, perform data cleansing and analysis, and convert it into Excel format to create Tool Capability Lists for BOEING aircraft maintenance, eliminating manual input and ensuring accuracy.
+                        </p>
+                        <div class="haeco-tags">
+                            <span class="haeco-tag">Python</span>
+                            <span class="haeco-tag">PDF Extraction</span>
+                            <span class="haeco-tag">Data Cleansing</span>
+                            <span class="haeco-tag">Excel</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="haeco-card scale-in">
+                    <div class="haeco-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="haeco-content">
+                        <h3 class="haeco-title">Tool List Extraction System</h3>
+                        <div class="haeco-stats">
+                            <div class="haeco-stat">
+                                <div class="haeco-stat-number">90%</div>
+                                <div class="haeco-stat-label">Efficiency Increase</div>
+                            </div>
+                        </div>
+                        <p class="haeco-description">
+                            Developed a Python-based system to extract tool list data from SGML and XML files and convert it into Excel format. This enabled real-time tooling database capabilities, improved decision-making, and allowed faster responses to market or audit inquiries.
+                        </p>
+                        <div class="haeco-tags">
+                            <span class="haeco-tag">Python</span>
+                            <span class="haeco-tag">SGML/XML</span>
+                            <span class="haeco-tag">Data Processing</span>
+                            <span class="haeco-tag">Real-time Database</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Work Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Oct 2024 - Present</div>
+                        <h3 class="timeline-title">Part-Time Analyst Programmer</h3>
+                        <span class="timeline-company">HAECO (Hong Kong Aircraft Engineering Company Limited)</span>
+                        <p class="timeline-description">Developed automation systems and data extraction tools to enhance operational efficiency while ensuring precision for aircraft maintenance documentation.</p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Python</span>
+                            <span class="timeline-tag">Automation</span>
+                            <span class="timeline-tag">Data Processing</span>
+                            <span class="timeline-tag">XML/SGML</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Jun 2024 - Aug 2024</div>
+                        <h3 class="timeline-title">Summer Intern</h3>
+                        <span class="timeline-company">HAECO (Hong Kong Aircraft Engineering Company Limited)</span>
+                        <p class="timeline-description">Developed a Python-based application that increased efficiency by 90%, enabling real-time tooling database capabilities for aircraft to improve decision-making and allow faster responses to market inquiries.</p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Python</span>
+                            <span class="timeline-tag">Database Management</span>
+                            <span class="timeline-tag">Real-time Data</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Dec 2023 - Jan 2024</div>
+                        <h3 class="timeline-title">Programmer, Winter Internship</h3>
+                        <span class="timeline-company">IGEARS Technology Limited</span>
+                        <p class="timeline-description">Developed a window and mac application used to point a device's dynamic IP address to a static hostname on a website using Python, SQL, PHP, HTML and CSS, similar to a no-ip desktop application.</p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Python</span>
+                            <span class="timeline-tag">SQL</span>
+                            <span class="timeline-tag">PHP</span>
+                            <span class="timeline-tag">HTML/CSS</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Jun 2023 - Aug 2023</div>
+                        <h3 class="timeline-title">Software Development Assistant</h3>
+                        <span class="timeline-company">Latent Links Limited</span>
+                        <p class="timeline-description">Led the renovation of a WordPress e-commerce website (Femmake.com), enhancing both backend and frontend functionalities while collaborating with cross-functional teams to ensure seamless project execution.</p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">WordPress</span>
+                            <span class="timeline-tag">E-commerce</span>
+                            <span class="timeline-tag">Web Development</span>
+                            <span class="timeline-tag">Front-end</span>
+                            <span class="timeline-tag">Back-end</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-container">
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Location-Based Attendance App</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">React Native</span>
+                            <span class="project-tag">Expo</span>
+                            <span class="project-tag">Appwrite</span>
+                            <span class="project-tag">Geolocation</span>
+                        </div>
+                        <p class="project-description">Built a cross-platform mobile app for attendance tracking using verification code and geolocation to ensure files are accessible only within a set geographic area on the map, enhancing security and accuracy.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-outline btn-sm">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <i class="fas fa-baseball-ball"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Player Management System</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">MongoDB</span>
+                            <span class="project-tag">Node.js</span>
+                            <span class="project-tag">Vue.js</span>
+                            <span class="project-tag">Bootstrap</span>
+                            <span class="project-tag">HTML/CSS</span>
+                        </div>
+                        <p class="project-description">Developed a responsive players and team schedule management website for the Hong Kong China Softball Association using modern web technologies and full-stack development practices.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-outline btn-sm">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Event & Volunteer Management System</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">MongoDB</span>
+                            <span class="project-tag">Node.js</span>
+                            <span class="project-tag">Vue.js</span>
+                            <span class="project-tag">Bootstrap</span>
+                            <span class="project-tag">Responsive</span>
+                        </div>
+                        <p class="project-description">Developed a responsive event and volunteer management website prototype using full-stack technologies to streamline event coordination and volunteer assignment processes.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-outline btn-sm">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-methods">
+                    <div class="contact-card scale-in">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3 class="contact-type">Phone</h3>
+                        <p class="contact-value">(+852) 9152 4185</p>
+                    </div>
+                    
+                    <div class="contact-card scale-in">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3 class="contact-type">Email</h3>
+                        <a href="mailto:johnwin444@gmail.com" class="contact-value">johnwin444@gmail.com</a>
+                    </div>
+                    
+                    <div class="contact-card scale-in">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3 class="contact-type">Location</h3>
+                        <p class="contact-value">Hong Kong SAR</p>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/johnwin444/" class="social-link" target="_blank" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/JohnWin" class="social-link" target="_blank" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:johnwin444@gmail.com" class="social-link" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">John Win</div>
+                <div class="footer-links">
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#haeco-projects">HAECO Projects</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/in/johnwin444/" target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/JohnWin" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:johnwin444@gmail.com">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+                <div class="copyright">
+                    &copy; 2025 John Win. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Smooth scrolling with enhanced physics
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // Using better easing function
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+        
+        // Enhanced scroll animations with sequential delays
+        const fadeElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in');
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        const haecoCars = document.querySelectorAll('.haeco-card');
+        
+        const applyAnimationWithDelay = (elements, baseDelay = 0) => {
+            elements.forEach((element, index) => {
+                const delay = baseDelay + (index * 0.15); // 150ms staggered delay
+                element.style.transitionDelay = `${delay}s`;
+            });
+        };
+        
+        // Apply staggered delays to timeline items and HAECO cards
+        applyAnimationWithDelay(timelineItems);
+        applyAnimationWithDelay(haecoCars);
+        
+        // Observer configuration
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        // Create observer for all animated elements
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Unobserve after animation is triggered
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all elements that need animations
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
+        
+        timelineItems.forEach(item => {
+            observer.observe(item);
+        });
+        
+        haecoCars.forEach(card => {
+            observer.observe(card);
+        });
+        
+        // Active navigation link based on scroll position with better detection
+        function updateActiveLink() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let currentSectionId = '';
+            let minDistance = Number.MAX_VALUE;
+            
+            const scrollPosition = window.scrollY + 200; // Adjust offset for better accuracy
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                
+                // Calculate distance to section
+                const distance = Math.abs(scrollPosition - sectionTop);
+                
+                // Check if we're within this section or if this is the closest section
+                if ((scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) || 
+                    distance < minDistance) {
+                    minDistance = distance;
+                    currentSectionId = sectionId;
+                }
+            });
+            
+            // Update active class
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSectionId}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        
+        // Add debounce to scroll events for better performance
+        function debounce(func, wait = 15, immediate = true) {
+            let timeout;
+            return function() {
+                const context = this, args = arguments;
+                const later = function() {
+                    timeout = null;
+                    if (!immediate) func.apply(context, args);
+                };
+                const callNow = immediate && !timeout;
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+                if (callNow) func.apply(context, args);
+            };
+        }
+        
+        // Use debounced scroll handler
+        window.addEventListener('scroll', debounce(function() {
+            updateActiveLink();
+        }, 10));
+        
+        // Initial active link on page load
+        updateActiveLink();
+        
+        // Parallax effect on hero section
+        function parallax() {
+            const hero = document.querySelector('#hero');
+            if (hero) {
+                const scrollPosition = window.pageYOffset;
+                hero.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
+            }
+        }
+        
+        window.addEventListener('scroll', debounce(parallax, 10));
+    </script>
+</body>
+</html>
