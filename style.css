@@ -449,156 +449,6 @@ section:nth-child(even) {
     box-shadow: 0 5px 10px rgba(79, 70, 229, 0.2);
 }
 
-/* Work Experience Section */
-/* .timeline {
-    position: relative;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.timeline::after {
-    content: '';
-    position: absolute;
-    width: 2px;
-    background: linear-gradient(to bottom, var(--primary), var(--secondary));
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    margin-left: -1px;
-}
-
-.timeline-item {
-    padding: 10px 40px;
-    position: relative;
-    width: 50%;
-    box-sizing: border-box;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.timeline-item.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.timeline-item:nth-child(odd) {
-    left: 0;
-}
-
-.timeline-item:nth-child(even) {
-    left: 50%;
-}
-
-.timeline-item::after {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: white;
-    border: 4px solid var(--primary);
-    top: 15px;
-    border-radius: 50%;
-    z-index: 1;
-    transition: var(--transition);
-}
-
-.timeline-item:hover::after {
-    background-color: var(--primary);
-    box-shadow: 0 0 0 5px rgba(79, 70, 229, 0.2);
-}
-
-.timeline-item:nth-child(odd)::after {
-    right: -10px;
-}
-
-.timeline-item:nth-child(even)::after {
-    left: -10px;
-}
-
-.timeline-content {
-    padding: 2rem;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    transition: var(--transition);
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
-}
-
-.timeline-content::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(79, 70, 229, 0.05) 0%, rgba(14, 165, 233, 0.05) 100%);
-    z-index: -1;
-    transition: opacity 0.3s ease;
-    opacity: 0;
-}
-
-.timeline-content:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(79, 70, 229, 0.1);
-}
-
-.timeline-content:hover::before {
-    opacity: 1;
-}
-
-.timeline-date {
-    background: var(--gradient);
-    color: white;
-    display: inline-block;
-    padding: 0.3rem 0.8rem;
-    border-radius: 50px;
-    font-size: 0.8rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
-    box-shadow: 0 3px 6px rgba(79, 70, 229, 0.2);
-}
-
-.timeline-title {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-    color: var(--dark);
-}
-
-.timeline-company {
-    color: var(--primary);
-    font-weight: 600;
-    margin-bottom: 1rem;
-    display: block;
-}
-
-.timeline-description {
-    margin-bottom: 1rem;
-}
-
-.timeline-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
-
-.timeline-tag {
-    background-color: rgba(79, 70, 229, 0.1);
-    color: var(--primary);
-    padding: 0.2rem 0.6rem;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    transition: var(--transition);
-}
-
-.timeline-tag:hover {
-    background-color: var(--primary);
-    color: white;
-} */
-
-
 /* Work Experience Section - Classic Minimalist Timeline */
 .timeline {
     position: relative;
@@ -607,7 +457,6 @@ section:nth-child(even) {
     padding: 3rem 0;
 }
 
-/* Vertical line - Simple and elegant */
 .timeline::before {
     content: '';
     position: absolute;
@@ -636,7 +485,7 @@ section:nth-child(even) {
     margin-bottom: 0;
 }
 
-/* Timeline dot - Minimal and refined */
+
 .timeline-item::before {
     content: '';
     position: absolute;
@@ -657,7 +506,7 @@ section:nth-child(even) {
     box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
 }
 
-/* Content card - Clean and simple */
+
 .timeline-content {
     background: white;
     border-radius: 8px;
@@ -673,7 +522,7 @@ section:nth-child(even) {
     transform: translateX(4px);
 }
 
-/* Date badge - Understated */
+
 .timeline-date {
     display: inline-flex;
     align-items: center;
@@ -692,7 +541,7 @@ section:nth-child(even) {
     background: var(--primary);
 }
 
-/* Title and company */
+
 .timeline-title {
     font-size: 1.25rem;
     font-weight: 600;
@@ -716,7 +565,7 @@ section:nth-child(even) {
     font-size: 0.95rem;
 }
 
-/* Tags - Minimal style */
+
 .timeline-tags {
     display: flex;
     flex-wrap: wrap;
@@ -738,7 +587,7 @@ section:nth-child(even) {
     color: var(--primary-dark);
 }
 
-/* Tablet adjustments */
+
 @media screen and (max-width: 968px) {
     .timeline {
         max-width: 100%;
@@ -755,7 +604,7 @@ section:nth-child(even) {
     }
 }
 
-/* Mobile adjustments */
+
 @media screen and (max-width: 768px) {
     .timeline::before {
         left: 0;
@@ -807,9 +656,10 @@ section:nth-child(even) {
 }
 
 
+/* end of experience */
 
 /* HAECO Projects Section */
-.business-solutions {
+/* .business-solutions {
     margin-top: 2rem;
 }
 
@@ -933,7 +783,262 @@ section:nth-child(even) {
     background: var(--gradient);
     color: white;
     transform: translateY(-2px);
+} */
+
+
+/* HAECO Projects Section */
+#business-solutions {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
 }
+
+.project-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.haeco-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e5e7eb;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: visible; /* Changed from hidden to visible */
+}
+
+.haeco-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(79, 70, 229, 0.15);
+    border-color: var(--primary-light);
+}
+
+.haeco-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+    transition: all 0.3s ease;
+    flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.haeco-card:hover .haeco-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 6px 16px rgba(79, 70, 229, 0.3);
+}
+
+.haeco-icon i {
+    font-size: 2rem;
+    color: white;
+    display: block; /* Ensure icon displays as block */
+    line-height: 1; /* Remove any extra line height */
+}
+
+.haeco-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.haeco-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.haeco-stats {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.25rem;
+    padding: 1rem 0;
+    border-top: 1px solid #f3f4f6;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.haeco-stat {
+    text-align: left;
+}
+
+.haeco-stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+}
+
+.haeco-stat-label {
+    font-size: 0.85rem;
+    color: var(--gray);
+    font-weight: 500;
+}
+
+.haeco-description {
+    color: var(--gray);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    flex: 1;
+}
+
+.haeco-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+}
+
+.haeco-tag {
+    display: inline-block;
+    padding: 0.4rem 0.9rem;
+    background: rgba(79, 70, 229, 0.06);
+    color: var(--primary);
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.haeco-tag:hover {
+    background: rgba(79, 70, 229, 0.1);
+    border-color: var(--primary-light);
+    transform: translateY(-2px);
+}
+
+/* Scale-in animation */
+.scale-in {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.6s ease;
+}
+
+.scale-in.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Tablet adjustments */
+@media screen and (max-width: 968px) {
+    #business-solutions {
+        padding: 4rem 0;
+    }
+
+    .project-cards {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .haeco-card {
+        padding: 2rem;
+    }
+
+    .haeco-icon {
+        width: 65px;
+        height: 65px;
+    }
+
+    .haeco-icon i {
+        font-size: 1.8rem;
+    }
+
+    .haeco-title {
+        font-size: 1.2rem;
+    }
+
+    .haeco-stat-number {
+        font-size: 1.75rem;
+    }
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 768px) {
+    #business-solutions {
+        padding: 3rem 0;
+    }
+
+    .haeco-card {
+        padding: 1.75rem;
+    }
+
+    .haeco-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .haeco-icon i {
+        font-size: 1.6rem;
+    }
+
+    .haeco-title {
+        font-size: 1.15rem;
+    }
+
+    .haeco-stats {
+        gap: 1.5rem;
+    }
+
+    .haeco-stat-number {
+        font-size: 1.6rem;
+    }
+
+    .haeco-stat-label {
+        font-size: 0.8rem;
+    }
+
+    .haeco-description {
+        font-size: 0.9rem;
+    }
+
+    .haeco-tag {
+        font-size: 0.75rem;
+        padding: 0.35rem 0.75rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .project-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .haeco-card {
+        padding: 1.5rem;
+    }
+
+    .haeco-icon {
+        width: 55px;
+        height: 55px;
+    }
+
+    .haeco-icon i {
+        font-size: 1.5rem;
+    }
+
+    .haeco-stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .haeco-stat-number {
+        font-size: 1.5rem;
+    }
+}
+
+
+
+/* end of business solutions */
 
 /* Projects Section */
 .projects-container {
